@@ -1,0 +1,9 @@
+{
+  "name": "typed-f",
+  "alias": "typed-f",
+  "env": {
+    "NODE_ENV": "production",
+    "SLACK_WORKSPACE_TOKEN": "@slack-workspace-token"
+  },
+  "public": true
+}

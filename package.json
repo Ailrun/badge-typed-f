@@ -1,0 +1,23 @@
+{
+  "name": "server",
+  "version": "0.0.0",
+  "scripts": {
+    "start": "node bin/www",
+    "clean": "now rm typed-f",
+    "deploy": "run-s deploy:send deploy:alias",
+    "deploy:send": "now",
+    "deploy:alias": "now alias",
+    "redeploy": "run-s clean deploy"
+  },
+  "dependencies": {
+    "express": "^4.16.3",
+    "http-errors": "^1.7.0",
+    "node-fetch": "^2.2.0",
+    "query-string": "^6.1.0"
+  },
+  "private": true,
+  "devDependencies": {
+    "now": "^11.3.12",
+    "npm-run-all": "^4.1.3"
+  }
+}

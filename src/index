@@ -1,0 +1,18 @@
+const express = require('express');
+
+const httpErrors = require('http-errors');
+
+const app = express();
+
+app.use('/slack-badge.svg', require('./slackBadge'));
+
+app.use(function(req, res, next) {
+  next(httpErrors(404));
+});
+
+app.use(function(err, req, res, next) {
+  res.status(err.status || 500);
+  res.send(err.message);
+});
+
+module.exports = app;
