@@ -1,4 +1,8 @@
+# Installed NPM packages
 node_modules/
+
+# Environment variables that can be used with dotenv
+.env
 
 .tern-port
 
