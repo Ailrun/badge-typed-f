@@ -1,0 +1,102 @@
+html, body {
+    margin: 0;
+
+    box-sizing: border-box;
+
+    padding: 0;
+
+    font-size: 18px;
+}
+
+.page {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    box-sizing: border-box;
+    width: 304px;
+
+    text-align: center;
+}
+
+.slack-logo {
+    width: 3rem;
+    height: 3rem;
+}
+
+.title-link {
+    text-decoration: none;
+    color: #007ACC;
+}
+
+.active-user {
+    font-size: 1.1rem;
+    color: #007ACC;
+}
+
+.total-user {
+    font-size: 1.1rem;
+    color: #666666;
+}
+
+input.email {
+    margin-bottom: 0.5rem;;
+
+    box-sizing: border-box;
+    width: 100%;
+
+    padding: 0.8rem;
+    border-color: #DADADA;
+    border-width: 0.1rem;
+    border-style: solid;
+    border-radius: 0.2rem;
+
+    text-align: center;
+}
+
+input.email:focus {
+    border-color: #ABABAB;
+    outline: none;
+}
+
+button.request-invite {
+    margin-top: 0.5rem;
+
+    box-sizing: border-box;
+    width: 100%;
+
+    padding: 0.5rem;
+
+    background-color: #007ACC;
+    border-width: 0;;
+    border-radius: 0.2rem;
+
+    font-weight: bold;
+    color: #ffffff;
+
+    transition-duration: 300ms;
+}
+
+button.request-invite.error {
+    background-color: #dd2222;
+}
+
+button.request-invite:focus {
+    outline: none;
+}
+
+button.request-invite:disabled {
+    background-color: #666666;
+}
+
+.signin {
+    margin: 0.5rem;
+
+    font-size: 0.9rem;
+}
+
+.signin-link {
+    text-decoration: none;
+    color: #007ACC;
+}

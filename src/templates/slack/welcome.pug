@@ -1,0 +1,39 @@
+doctype html
+html
+  head
+    title Join Typed-F on Slack!
+    meta(name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,user-scalable=no")
+
+    link(rel="shortcut icon" href="https://slack.global.ssl.fastly.net/272a/img/icons/favicon-32.png")
+    link(rel="stylesheet" href="./welcome.css")
+  body
+    main.page
+      .logo
+        img.slack-logo(src="./slack-logo.svg")
+      p 
+        | Join
+        |
+        b.title
+          a.title-link(
+            href="https://github.com/Ailrun/typed-f"
+            target="_blank"
+          )
+            | Typed-F
+        |
+        | on Slack
+      p
+        b.active-user #{active}
+        |
+        | users online now of
+        |
+        b.total-user #{total}
+        |
+        | registered.
+      form
+        input.email(type="email" name="email" placeholder="your@email.com" autofocus)
+        .recaptcha(data-sitekey=recaptchaKey)
+        button.request-invite(type="submit") Get My Invite
+      p.signin
+        | or
+        |
+        a.signin-link(href="https://typed-f.slack.com") sign in
