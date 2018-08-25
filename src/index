@@ -6,7 +6,7 @@ const httpErrors = require('http-errors');
 
 const app = express();
 
-app.use('/slack-badge.svg', require('./slackBadge'));
+app.use('/slack', require('./slack'));
 
 app.use(function(req, res, next) {
   next(httpErrors(404));

@@ -2,10 +2,13 @@
 
 const process = require('process');
 
+const express = require('express');
 const fetch = require('node-fetch');
 const queryString = require('query-string');
 
-module.exports = async function (req, res) {
+const router = module.exports = express.Router();
+
+router.get('/badge.svg', async function (req, res) {
   const members = await getMembers();
   const users = members.filter(isUser);
 
@@ -17,7 +20,7 @@ module.exports = async function (req, res) {
 
   res.set('Content-Type', 'image/svg+xml');
   res.send(badge);
-};
+});
 
 async function getMembers() {
   const token = process.env.SLACK_WORKSPACE_TOKEN;
