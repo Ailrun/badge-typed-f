@@ -3,7 +3,9 @@
   "alias": "typed-f",
   "env": {
     "NODE_ENV": "production",
-    "SLACK_WORKSPACE_TOKEN": "@slack-workspace-token"
+    "SLACK_WORKSPACE_TOKEN": "@slack-workspace-token",
+    "GOOGLE_RECAPTCHA_SITEKEY": "@google-recaptcha-sitekey",
+    "GOOGLE_RECAPTCHA_SECRETKEY": "@google-recaptcha-secretkey"
   },
   "public": true
 }

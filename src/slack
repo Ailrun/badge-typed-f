@@ -42,7 +42,71 @@ router.get('/welcome', async function (req, res) {
   });
 });
 
+router.post('/invite', async function (req, res) {
+  const email = req.body.email;
+  const recaptchaResponse = req.body.recaptchaResponse;
+
+  let invitationResult;
+
+  try {
+    const recaptchaStatus = await getRecaptchaStatus({
+      remoteip: req.connection.remoteAddress,
+      recaptchaResponse,
+    });
+
+    if (!recaptchaStatus) {
+      throw new Error('Recaptcha check failed');
+    }
+
+    invitationResult = await postInvitation({ email });
+  } catch (e) {
+    return res.status(400).send({ message: e.message });
+  }
+
+  if (!invitationResult) {
+    return res.send({ slackLink: slackUrl, message: 'Now we are going to Slack...' });
+  }
+
+  return res.send({ message: 'Please check your email! '});
+});
+
 router.use(express.static(path.join(__dirname, './public/slack/')));
+
+async function postInvitation({ email }) {
+  const response = await request.get(makeSlackAPIUrl(`users.admin.invite`))
+    .query({ email })
+    .set('Authorization', 'Bearer ' + process.env.SLACK_WORKSPACE_TOKEN);
+
+  if (response.status != 200) {
+    throw new Error(`Response with invalid status ${response.status}`);
+  }
+
+  const { ok, error } = response.body;
+
+  if (!ok) {
+    if (error === 'already_invited') {
+      throw new Error('You have already been invited to Slack. Check for an email from feedback@slack.com.');
+    } else if (error === 'already_in_team') {
+      return false;
+    } else {
+      throw new Error(error);
+    }
+  }
+
+  return true;
+}
+
+async function getRecaptchaStatus({ remoteip, recaptchaResponse }) {
+  const response = await request.post('https://www.google.com/recaptcha/api/siteverify')
+    .type('form')
+    .send({
+      secret: process.env.GOOGLE_RECAPTCHA_SECRETKEY,
+      response: recaptchaResponse,
+      remoteip,
+    });
+
+  return response.body.success;
+}
 
 async function getMembers() {
   const response = await request(makeSlackAPIUrl('users.list'))

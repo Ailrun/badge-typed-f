@@ -4,7 +4,9 @@ html
     title Join Typed-F on Slack!
     meta(name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,user-scalable=no")
 
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/superagent/3.8.3/superagent.min.js")
     link(rel="shortcut icon" href="https://slack.global.ssl.fastly.net/272a/img/icons/favicon-32.png")
+
     link(rel="stylesheet" href="./welcome.css")
     link(rel="stylesheet" href="./welcome-loading.css")
   body
@@ -45,3 +47,4 @@ html
         |
         a.signin-link(href="https://typed-f.slack.com") sign in
     script(src="./welcome.js")
+    script(src="https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad&render=explicit" defer async)
