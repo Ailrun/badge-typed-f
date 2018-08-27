@@ -6,8 +6,15 @@ html
 
     link(rel="shortcut icon" href="https://slack.global.ssl.fastly.net/272a/img/icons/favicon-32.png")
     link(rel="stylesheet" href="./welcome.css")
+    link(rel="stylesheet" href="./welcome-loading.css")
   body
-    main.page
+    .loading
+      i.loading-icon
+        - let n = 0
+        while n < 5
+          - n++
+          div
+    main.page(style="display: none")
       .logo
         img.slack-logo(src="./slack-logo.svg")
       p 
@@ -37,3 +44,4 @@ html
         | or
         |
         a.signin-link(href="https://typed-f.slack.com") sign in
+    script(src="./welcome.js")

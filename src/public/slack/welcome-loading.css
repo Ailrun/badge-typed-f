@@ -1,0 +1,92 @@
+.loading {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+.loading-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.loading-icon > div {
+    display: inline-block;
+    margin: 0.1rem;
+
+    width: 0.5rem;
+    height: 2rem;
+
+    background-color: #007ACC;
+
+    animation-timing-function: ease-in;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+
+.loading-icon > :nth-child(3) {
+    animation-name: loading-icon-1st;
+}
+
+.loading-icon > :nth-child(2), .loading-icon > :nth-child(4) {
+    animation-name: loading-icon-2nd;
+}
+
+.loading-icon > :nth-child(1), .loading-icon > :nth-child(5) {
+    animation-name: loading-icon-3rd;
+}
+
+@keyframes loading-icon-1st {
+    0% {
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes loading-icon-2nd {
+    0% {
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 0;
+    }
+
+    60% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes loading-icon-3rd {
+    0% {
+        opacity: 0;
+    }
+
+    60% {
+        opacity: 0;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
