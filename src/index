@@ -2,9 +2,12 @@
 
 const express = require('express');
 
+const bodyParser = require('body-parser');
+
 const httpErrors = require('http-errors');
 
 const app = express();
+app.use(bodyParser.json());
 
 app.use('/slack', require('./slack'));
 
